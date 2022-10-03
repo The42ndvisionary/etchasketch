@@ -11,6 +11,7 @@ function makeGrid(rows,coloumns) {
     containerDiv.style.width = "auto";
     containerDiv.style.overflow = "hidden";
 for (i=0;i < (rows * coloumns); i++) {
+    
     let cell =document.createElement("div");
     cell.style.minHeight="0";
     cell.style.minWidth="0";
@@ -18,14 +19,22 @@ for (i=0;i < (rows * coloumns); i++) {
 
     containerDiv.appendChild(cell).className="grid-item";
     cell.addEventListener("mouseover",(event) =>    {
-        event.target.style.backgroundColor="purple";
+        function getRandomRgb() {
+            var num = Math.round(0xffffff * Math.random());
+            var r = num >> 16;
+            var g = num >> 8 & 255;
+            var b = num & 255;
+            return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+          }
+        
+        event.target.style.backgroundColor= getRandomRgb();
     })
 }
-createbutton();
+createbutton1();
 }
 
 
-function createbutton() {
+function createbutton1() {
     const buttonDiv = document.querySelector("#buttonDiv");
     const resetbuttom = document.createElement("button");
     resetbuttom.innerText="Reset Grid";
